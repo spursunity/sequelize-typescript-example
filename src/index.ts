@@ -1,7 +1,9 @@
-import somevar from './imp';
+import { sequelize } from './db';
 
-function func() :void {
-  console.log(somevar.abc);
-}
-
-func();
+(async () => {
+  try {
+    await sequelize.sync({ force: true });
+  } catch (error) {
+    console.log('error.message :', error.message);
+  }
+})()
