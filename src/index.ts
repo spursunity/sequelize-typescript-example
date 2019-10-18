@@ -6,7 +6,7 @@ import { AuthorOld } from './models/AuthorOld';
     await sequelize.sync(); // { force: true }
 
     // const newAuthor = await AuthorOld.create({ name: 'John', years: 65 });
-    const oldAuthor = await AuthorOld.findAll();
+    const oldAuthor = await AuthorOld.findAll({ raw: true });
 
     console.log('============================');
     console.log('oldAuthor :', oldAuthor);
