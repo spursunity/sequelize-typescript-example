@@ -8,7 +8,8 @@
     "moduleResolution": "node",
     "strict": false,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "removeComments": true
   },
   "exclude": [
     "/node_modules",

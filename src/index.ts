@@ -1,16 +1,11 @@
-import { sequelize } from './db';
-import { AuthorOld } from './models/AuthorOld';
+import { decOne, decTwo } from './decorators';
 
-(async () => {
+(() => {
   try {
-    await sequelize.sync(); // { force: true }
-
-    // const newAuthor = await AuthorOld.create({ name: 'John', years: 65 });
-    const oldAuthor = await AuthorOld.findAll({ raw: true });
-
-    console.log('============================');
-    console.log('oldAuthor :', oldAuthor);
-    // console.log('newAuthor :', newAuthor);
+    console.log('=============================');
+    // decOne();
+    decTwo();
+    console.log('=============================');
   } catch (error) {
     console.log('error.message :', error.message);
   }
