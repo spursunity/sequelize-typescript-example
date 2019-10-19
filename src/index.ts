@@ -1,5 +1,6 @@
 import { decOne, decTwo } from './decorators';
 import { decThree, decFour, decFive } from './decForMethods';
+import { decSix, decSeven } from './decForProp';
 
 (() => {
   try {
@@ -8,7 +9,9 @@ import { decThree, decFour, decFive } from './decForMethods';
     // decTwo();
     // decThree();
     // decFour();
-    decFive();
+    // decFive();
+    // decSix();
+    decSeven();
     console.log('=============================');
   } catch (error) {
     console.log('error.message :', error.message);
