@@ -8,4 +8,7 @@ export class AuthorOld extends Model<AuthorOld> {
  
   @Column
   years: number;
+
+  @Column
+  books_count: number;
 }
