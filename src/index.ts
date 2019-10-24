@@ -1,9 +1,7 @@
-import { sequelize } from './db';
-import { AuthorOld } from './models/AuthorOld';
+import { AuthorOld } from './db';
 
 (async () => {
   try {
-    await sequelize.sync(); // { force: true }
 
     // const newAuthor = await AuthorOld.create({ name: 'John', years: 65 });
     const oldAuthor = await AuthorOld.findAll({ raw: true });
