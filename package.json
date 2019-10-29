@@ -5,12 +5,13 @@
   "license": "MIT",
   "scripts": {
     "compile": "tsc",
-    "start": "node ./dist/index.js"
+    "start": "node ./dist/src/index.js"
   },
   "dependencies": {
     "@types/bluebird": "^3.5.28",
     "@types/node": "^12.11.1",
     "@types/validator": "^10.11.3",
+    "mongoose": "^5.7.7",
     "pg": "^7.12.1",
     "pg-hstore": "^2.3.3",
     "reflect-metadata": "^0.1.13",
