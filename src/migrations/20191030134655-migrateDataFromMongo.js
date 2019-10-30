@@ -33,28 +33,29 @@ AuthorOld.init({
   },
 }, { sequelize, modelName: 'AuthorOld' });
 
+module.exports = {
+  up: async (queryInterface, Sequelize) => {
+    try {
+      await connectMongoose();
+  
+      const authors = await Author.find();
+  
+      const postgresAuthors = authors.map((author) => {
+        const { name, years } = author;
+  
+        return {
+          name,
+          years,
+        };
+      });
+  
+      await AuthorOld.bulkCreate(postgresAuthors);
+  
+      const response = await AuthorOld.findAll({ raw: true });
+    } catch (error) {
+      console.log('error :', error.message);
+    }
+  },
 
-(async () => {
-  try {
-    await connectMongoose();
-
-    const authors = await Author.find();
-
-    const postgresAuthors = authors.map((author) => {
-      const { name, years } = author;
-
-      return {
-        name,
-        years,
-      };
-    });
-
-    await AuthorOld.bulkCreate(postgresAuthors);
-
-    const response = await AuthorOld.findAll({ raw: true });
-
-    console.log('response :', response);
-  } catch (error) {
-    console.log('error :', error.message);
-  }
-})();
+  down: (queryInterface, Sequelize) => {}
+};
