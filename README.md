@@ -12,3 +12,6 @@ Info about how to create decorators
 how to work with 'sequelize-cli'
 
 migration example(-/s)
+
+## mongodb-to-postgres
+trying copy data from mongodb to postgres by sequelize migration
