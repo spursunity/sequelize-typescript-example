@@ -38,22 +38,31 @@ AuthorOld.init({
   try {
     await connectMongoose();
 
-    const authors = await Author.find();
+    const limit = 1;
+    let offset = 0;
 
-    const postgresAuthors = authors.map((author) => {
-      const { name, years } = author;
+    const instancesAmount = await Author.count();
 
-      return {
-        name,
-        years,
-      };
-    });
+    while (instancesAmount > offset) {
+      const authors = await Author
+      .find()
+      .skip(offset)
+      .limit(limit)
+      ;
 
-    await AuthorOld.bulkCreate(postgresAuthors);
+      offset += limit;
 
-    const response = await AuthorOld.findAll({ raw: true });
+      const postgresAuthors = authors.map((author) => {
+        const { name, years } = author;
 
-    console.log('response :', response);
+        return {
+          name,
+          years,
+        };
+      });
+
+      await AuthorOld.bulkCreate(postgresAuthors);
+    }
   } catch (error) {
     console.log('error :', error.message);
   }
