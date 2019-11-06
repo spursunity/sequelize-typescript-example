@@ -60,7 +60,7 @@ module.exports = {
             years,
           };
         });
-  
+
         await AuthorOld.bulkCreate(postgresAuthors);
       }
     } catch (error) {
