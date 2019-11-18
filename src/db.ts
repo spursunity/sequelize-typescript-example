@@ -2,6 +2,7 @@ import {Sequelize} from 'sequelize-typescript';
 import {connection, connect} from 'mongoose';
 
 import { AuthorOld } from './models/AuthorOld';
+import { tName } from './models/TestName';
 import { postgres, mongodb } from '../secret/config';
 
 const {
@@ -19,9 +20,9 @@ export const sequelize =  new Sequelize({
   host,
 });
 
-sequelize.addModels([AuthorOld]);
+sequelize.addModels([AuthorOld, tName]);
 
-export { AuthorOld };
+export { AuthorOld, tName };
 
 export const connectMongoose = async () => {
   connection.on('error', () => {
