@@ -27,4 +27,4 @@ sequelize.addModels([
   Weather,
 ]);
 
-export { City, Weather };
+export { City, Weather, CityWeather };
