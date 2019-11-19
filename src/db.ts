@@ -1,9 +1,10 @@
 import {Sequelize} from 'sequelize-typescript';
-import {connection, connect} from 'mongoose';
 
-import { AuthorOld } from './models/AuthorOld';
-import { tName } from './models/TestName';
-import { postgres, mongodb } from '../secret/config';
+import { postgres } from '../secret/config';
+
+import { City } from './models/City';
+import { CityWeather } from './models/CityWeather';
+import { Weather } from './models/Weather';
 
 const {
   database,
@@ -20,21 +21,10 @@ export const sequelize =  new Sequelize({
   host,
 });
 
-sequelize.addModels([AuthorOld, tName]);
+sequelize.addModels([
+  City,
+  CityWeather,
+  Weather,
+]);
 
-export { AuthorOld, tName };
-
-export const connectMongoose = async () => {
-  connection.on('error', () => {
-    console.error('__Connection_Error__');
-  });
-
-  connection.once('open', () => {
-    console.log('Connection was established');
-  });
-
-  await connect(mongodb.uri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
-}
+export { City, Weather };

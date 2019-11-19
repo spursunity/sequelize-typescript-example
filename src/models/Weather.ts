@@ -3,6 +3,7 @@ import {
   Column,
   Model,
   BelongsToMany,
+  AllowNull,
 } from 'sequelize-typescript';
 
 import { City } from './City';
@@ -13,7 +14,8 @@ import { CityWeather } from './CityWeather';
   underscored: true,
 })
 export class Weather extends Model<Weather> {
- 
+
+  @AllowNull(false)
   @Column
   type!: string;
 
