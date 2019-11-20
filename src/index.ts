@@ -15,7 +15,10 @@ import { City, Weather, CityWeather } from './db';
 
     const cities = await City.findAll({
       where: { id: 2 },
-      include: [ Weather ],
+      include: [ {
+        model: Weather,
+        through: { attributes: [] },
+      }],
     });
 
     const weather = cities[0].get({ plain: true });
